@@ -4,7 +4,7 @@ import '../widgets/glass_container.dart';
 import '../widgets/glass_button.dart';
 import '../widgets/dynamic_mesh_background.dart';
 import '../theme.dart';
-import 'main_shell.dart';
+import 'login_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -123,7 +123,7 @@ class OnboardingScreen extends StatelessWidget {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (_) => const MainShell(),
+                                          builder: (_) => const LoginScreen(),
                                         ),
                                       );
                                     },

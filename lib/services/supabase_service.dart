@@ -98,6 +98,34 @@ class SupabaseService {
 
   // ─── Auth Helpers ───────────────────────────────────────
 
+  /// Sign up a new user
+  Future<void> signUp({required String email, required String password, required String fullName}) async {
+    final response = await _client.auth.signUp(
+      email: email,
+      password: password,
+      data: {'full_name': fullName},
+    );
+    if (response.user == null) {
+      throw Exception('Sign up failed');
+    }
+  }
+
+  /// Sign in an existing user
+  Future<void> signIn({required String email, required String password}) async {
+    final response = await _client.auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+    if (response.user == null) {
+      throw Exception('Sign in failed');
+    }
+  }
+
+  /// Sign out the current user
+  Future<void> signOut() async {
+    await _client.auth.signOut();
+  }
+
   /// Check if user is currently logged in
   bool get isLoggedIn => _client.auth.currentUser != null;
 
